@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-
-import '../../provider/theme_provider.dart';
+import '../../main.dart';
 
 Widget ThemeButton(BuildContext context) {
-  return ElevatedButton(
-    onPressed: () {
-      // 현재 테마 모드를 체크하고, 클릭시 테마 전환
-      final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
-      if (themeProvider.themeMode == ThemeMode.light) {
-        themeProvider.setThemeMode(ThemeMode.dark);
-      } else {
-        themeProvider.setThemeMode(ThemeMode.light);
-      }
+  return ValueListenableBuilder<ThemeMode>(
+    valueListenable: MyApp.themeNotifier,
+    builder: (_, currentThemeMode, __) {
+      return IconButton(
+        onPressed: () {
+          MyApp.themeNotifier.value = currentThemeMode == ThemeMode.light
+              ? ThemeMode.dark
+              : ThemeMode.light;
+        },
+        icon: Icon(
+            currentThemeMode == ThemeMode.light ? Icons.light_mode : Icons.dark_mode
+        ),
+      );
     },
-    child: Text('Toggle Theme Mode'),
   );
 }

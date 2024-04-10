@@ -8,7 +8,8 @@ class IconController {
   late final SMIBool trigger;
 
   IconController(Artboard artboard, String stateMachineName, String inputName) {
-    var controller = RiveUtils.getRiveController(artboard, stateMachineName: stateMachineName);
+    var controller = RiveUtils.getRiveController(artboard,
+        stateMachineName: stateMachineName);
     trigger = controller.findSMI(inputName) as SMIBool;
   }
 
@@ -48,26 +49,47 @@ class _NavigationState extends State<Navigation> {
               });
             });
           },
-          destinations: List.generate(5, (index) => NavigationDestination(
-            icon: SizedBox(
-              width: 24.w,
-              height: 24.h,
-              child: RiveAnimation.asset(
-                "assets/icons/icons.riv",
-                artboard: ["HOME", "LIKE/STAR", "USER", "CHAT", "SETTINGS"][index],
-                onInit: (artboard) {
-                  iconControllers[index] = IconController(
-                    artboard,
-                    ["HOME_interactivity", "STAR_Interactivity", "USER_Interactivity", "CHAT_Interactivity", "SETTINGS_Interactivity"][index],
-                    "active",
-                  );
-                  iconControllers[index]?.setActive(index == selectedIndex);
-                },
-                fit: BoxFit.cover,
-              ),
-            ),
-            label: ["Home", "LIKE", "Untitled", "CHAT", "Settings"][index],
-          )),
+          destinations: List.generate(
+              5,
+              (index) => NavigationDestination(
+                    icon: SizedBox(
+                      width: 24.w,
+                      height: 24.h,
+                      child: RiveAnimation.asset(
+                        "assets/icons/icons.riv",
+                        artboard: [
+                          "HOME",
+                          "LIKE/STAR",
+                          "USER",
+                          "CHAT",
+                          "SETTINGS"
+                        ][index],
+                        onInit: (artboard) {
+                          iconControllers[index] = IconController(
+                            artboard,
+                            [
+                              "HOME_interactivity",
+                              "STAR_Interactivity",
+                              "USER_Interactivity",
+                              "CHAT_Interactivity",
+                              "SETTINGS_Interactivity"
+                            ][index],
+                            "active",
+                          );
+                          iconControllers[index]
+                              ?.setActive(index == selectedIndex);
+                        },
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                    label: [
+                      "Home",
+                      "LIKE",
+                      "Untitled",
+                      "CHAT",
+                      "Settings"
+                    ][index],
+                  )),
         ),
       ),
       body: SafeArea(
