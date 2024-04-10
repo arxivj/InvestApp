@@ -1,29 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
+/// [ThemeProvider]는 초기에는 시스템 테마 모드로 설정되어 있으며, 버튼 같은걸 통해 테마 모드를 변경할 수 있도록 구성함
 class ThemeProvider extends ChangeNotifier {
-  ThemeMode _themeMode = ThemeMode.system;
 
-  ThemeMode get themeMode => _themeMode;
+  ThemeMode _themeMode = ThemeMode.system; // 초기 테마 모드 설정
 
-  ThemeProvider() {
-    loadThemeMode();
-  }
+  ThemeMode get themeMode => _themeMode; // 현재 테마 모드를 가져옴
 
-  void setThemeMode(ThemeMode mode) async {
+  void setThemeMode(ThemeMode mode) { // 테마 모드 설정
     _themeMode = mode;
-    notifyListeners();
-    final prefs = await SharedPreferences.getInstance();
-    prefs.setString('themeMode', mode.toString());
-  }
-
-  Future<void> loadThemeMode() async {
-    final prefs = await SharedPreferences.getInstance();
-    final themeModeString = prefs.getString('themeMode') ?? ThemeMode.system.toString();
-    _themeMode = ThemeMode.values.firstWhere(
-          (e) => e.toString() == themeModeString,
-      orElse: () => ThemeMode.system,
-    );
     notifyListeners();
   }
 }

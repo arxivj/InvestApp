@@ -18,7 +18,7 @@ class Home extends StatelessWidget {
               fontWeight: FontWeight.bold,
             ),
           ),
-          ThemeButton(),
+          ThemeButton(context),
         ],
       ),
     ));
