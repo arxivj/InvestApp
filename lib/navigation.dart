@@ -29,6 +29,13 @@ class _NavigationState extends State<Navigation> {
   int selectedIndex = 0;
   final Map<int, IconController> iconControllers = {};
 
+  String getRiveFile(BuildContext context) {
+    final themeMode = Theme.of(context).brightness;
+    return themeMode == Brightness.dark
+        ? "assets/icons/icons_dark.riv"
+        : "assets/icons/icons_light.riv";
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -56,7 +63,7 @@ class _NavigationState extends State<Navigation> {
                       width: 24.w,
                       height: 24.h,
                       child: RiveAnimation.asset(
-                        "assets/icons/icons.riv",
+                        getRiveFile(context),
                         artboard: [
                           "HOME",
                           "LIKE/STAR",
@@ -86,7 +93,7 @@ class _NavigationState extends State<Navigation> {
                       "Home",
                       "LIKE",
                       "Untitled",
-                      "CHAT",
+                      "Limited",
                       "Settings"
                     ][index],
                   )),

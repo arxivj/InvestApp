@@ -7,21 +7,19 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          const Text(
-            'Home',
-            style: TextStyle(
-              fontSize: 24,
-              fontWeight: FontWeight.bold,
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            const Text(
+              'Home',
+              style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+              ),
             ),
-          ),
-          ThemeButton(context),
-        ],
-      ),
-    ));
+            ThemeButton(context),
+          ],
+        ));
   }
 }
 

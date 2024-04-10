@@ -8,4 +8,12 @@ class RiveUtils {
     artboard.addController(controller!);
     return controller;
   }
+
+  static void triggerInput(StateMachineController controller, String inputName) {
+    final input = controller.findInput<bool>(inputName);
+    if (input is SMIBool) {
+      input.value = !input.value;
+    }
+  }
+
 }

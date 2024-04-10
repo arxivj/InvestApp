@@ -38,25 +38,6 @@ class MyApp extends StatelessWidget {
           scrollBehavior: AppScrollBehavior(),
         );
       },
-      // child: MaterialApp(
-      //   title: 'Flutter Demo',
-      //   theme: ThemeData(
-      //       useMaterial3: true,
-      //       brightness: Brightness.light,
-      //       colorScheme: ColorScheme.fromSeed(
-      //         seedColor: AppColors.primarySeed,
-      //         brightness: Brightness.light,
-      //       )),
-      //   darkTheme: ThemeData(
-      //     useMaterial3: true,
-      //     brightness: Brightness.dark,
-      //     colorScheme: ColorScheme.fromSeed(
-      //         seedColor: AppColors.primarySeed, brightness: Brightness.dark),
-      //   ),
-      //   themeMode: themeNotifier.value,
-      //   home: const Root(),
-      //   scrollBehavior: AppScrollBehavior(),
-      // ),
     );
   }
 }
