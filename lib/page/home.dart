@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../widget/button/theme_button.dart';
+import '../widget/stock_marqee.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -8,7 +9,7 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         body: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
             const Text(
               'Home',
@@ -18,6 +19,8 @@ class Home extends StatelessWidget {
               ),
             ),
             ThemeButton(context),
+            const SizedBox(height: 250),
+            const StockMarquee()
           ],
         ));
   }
