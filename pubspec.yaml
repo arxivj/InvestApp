@@ -33,6 +33,7 @@ dependencies:
   provider: ^6.1.2
   flutter_web_frame: ^1.0.0
   flutter_screenutil: ^5.9.0
+  shared_preferences: ^2.2.2
   rive: ^0.13.1
 
   # The following adds the Cupertino Icons font to your application.
