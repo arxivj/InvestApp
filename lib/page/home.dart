@@ -9,20 +9,19 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         body: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
-            const Text(
-              'Home',
-              style: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            ThemeButton(context),
-            const SizedBox(height: 250),
-            const StockMarquee()
-          ],
-        ));
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: <Widget>[
+        const Text(
+          'Home',
+          style: TextStyle(
+            fontSize: 24,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        ThemeButton(),
+        const SizedBox(height: 250),
+        const StockMarquee()
+      ],
+    ));
   }
 }
-

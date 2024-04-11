@@ -1,29 +1,41 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
 import 'package:rive/rive.dart';
-import '../../main.dart';
+import '../../provider/theme_provider.dart';
 import '../../utils/rive_utils.dart';
 
-Widget ThemeButton(BuildContext context) {
-  return ValueListenableBuilder<ThemeMode>(
-    valueListenable: MyApp.themeNotifier,
-    builder: (_, currentThemeMode, __) {
+Widget ThemeButton() {
+  return Builder(
+    builder: (context) {
+      final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
+      String initialAnimation = '';
+      bool isClickable = true;
       return GestureDetector(
         onTap: () {
-          MyApp.themeNotifier.value = currentThemeMode == ThemeMode.light
-              ? ThemeMode.dark
-              : ThemeMode.light;
+          if (isClickable) {
+            final newThemeMode = themeProvider.themeMode == ThemeMode.light ? ThemeMode.dark : ThemeMode.light;
+            themeProvider.setThemeMode(newThemeMode);
+
+            isClickable = false;
+            Timer(const Duration(milliseconds: 2000), () {
+              isClickable = true;
+            });
+          }
         },
-        child: Container(
-          height: 56.h,
+        child: SizedBox(
+          height: 80.h,
           child: RiveAnimation.asset(
             'assets/icons/switch.riv',
             onInit: (artboard) {
               final controller = RiveUtils.getRiveController(artboard, stateMachineName: 'Button_Animation');
               artboard.addController(controller);
-              RiveUtils.triggerInput(controller, currentThemeMode == ThemeMode.light ? 'Day/Night_Click' : 'Night/Day_Click');
+              if (!themeProvider.isInitialLoad) {
+                RiveUtils.triggerInput(controller, initialAnimation);
+              }
             },
-            animations: ['idle'],
+            animations: [initialAnimation],
           ),
         ),
       );
