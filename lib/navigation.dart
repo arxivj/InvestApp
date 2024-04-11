@@ -39,65 +39,59 @@ class _NavigationState extends State<Navigation> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: ClipRRect(
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(16.r),
-          topRight: Radius.circular(16.r),
-        ),
-        child: NavigationBar(
-          animationDuration: const Duration(milliseconds: 500),
-          height: 56.h,
-          selectedIndex: selectedIndex,
-          onDestinationSelected: (index) {
-            setState(() {
-              selectedIndex = index;
-              iconControllers.forEach((iconIndex, controller) {
-                controller.setActive(iconIndex == index);
-              });
+      bottomNavigationBar: NavigationBar(
+        animationDuration: const Duration(milliseconds: 500),
+        height: 56.h,
+        selectedIndex: selectedIndex,
+        onDestinationSelected: (index) {
+          setState(() {
+            selectedIndex = index;
+            iconControllers.forEach((iconIndex, controller) {
+              controller.setActive(iconIndex == index);
             });
-          },
-          destinations: List.generate(
-              5,
-              (index) => NavigationDestination(
-                    icon: SizedBox(
-                      width: 24.w,
-                      height: 24.h,
-                      child: RiveAnimation.asset(
-                        getRiveFile(context),
-                        artboard: [
-                          "HOME",
-                          "LIKE/STAR",
-                          "USER",
-                          "CHAT",
-                          "SETTINGS"
-                        ][index],
-                        onInit: (artboard) {
-                          iconControllers[index] = IconController(
-                            artboard,
-                            [
-                              "HOME_interactivity",
-                              "STAR_Interactivity",
-                              "USER_Interactivity",
-                              "CHAT_Interactivity",
-                              "SETTINGS_Interactivity"
-                            ][index],
-                            "active",
-                          );
-                          iconControllers[index]
-                              ?.setActive(index == selectedIndex);
-                        },
-                        fit: BoxFit.cover,
-                      ),
+          });
+        },
+        destinations: List.generate(
+            5,
+            (index) => NavigationDestination(
+                  icon: SizedBox(
+                    width: 24.w,
+                    height: 24.h,
+                    child: RiveAnimation.asset(
+                      getRiveFile(context),
+                      artboard: [
+                        "HOME",
+                        "LIKE/STAR",
+                        "USER",
+                        "CHAT",
+                        "SETTINGS"
+                      ][index],
+                      onInit: (artboard) {
+                        iconControllers[index] = IconController(
+                          artboard,
+                          [
+                            "HOME_interactivity",
+                            "STAR_Interactivity",
+                            "USER_Interactivity",
+                            "CHAT_Interactivity",
+                            "SETTINGS_Interactivity"
+                          ][index],
+                          "active",
+                        );
+                        iconControllers[index]
+                            ?.setActive(index == selectedIndex);
+                      },
+                      fit: BoxFit.cover,
                     ),
-                    label: [
-                      "Home",
-                      "LIKE",
-                      "Untitled",
-                      "Limited",
-                      "Settings"
-                    ][index],
-                  )),
-        ),
+                  ),
+                  label: [
+                    "Home",
+                    "LIKE",
+                    "Untitled",
+                    "Limited",
+                    "Settings"
+                  ][index],
+                )),
       ),
       body: SafeArea(
         child: IndexedStack(

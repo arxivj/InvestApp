@@ -8,20 +8,41 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Column(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: <Widget>[
-        const Text(
-          'Home',
-          style: TextStyle(
-            fontSize: 24,
-            fontWeight: FontWeight.bold,
-          ),
+        floatingActionButtonLocation: const _CustomFabLocation(
+          FloatingActionButtonLocation.endFloat,
+          -30.0,
         ),
-        ThemeButton(),
-        const SizedBox(height: 250),
-        const StockMarquee()
-      ],
-    ));
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+          child: const Icon(
+            Icons.add,
+            color: Colors.white,
+          ),
+        elevation: 0,
+        focusNode: FocusNode(),
+        focusElevation: 0,
+      ),
+        bottomSheet: const StockMarquee(),
+        body: Column(
+          children: <Widget>[
+            ThemeButton(),
+            const SizedBox(height: 250),
+          ],
+        ));
+  }
+}
+
+
+/// [FloatingActionButtonLocation] Floating Action Button의 위치를 조절하기 위한 커스텀 유틸 위젯임
+class _CustomFabLocation extends FloatingActionButtonLocation {
+  final FloatingActionButtonLocation location;
+  final double offsetY;
+
+  const _CustomFabLocation(this.location, this.offsetY);
+
+  @override
+  Offset getOffset(ScaffoldPrelayoutGeometry scaffoldGeometry) {
+    final Offset offset = location.getOffset(scaffoldGeometry);
+    return Offset(offset.dx, offset.dy + offsetY);
   }
 }
