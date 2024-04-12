@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:untitled/page/chat.dart';
 import 'package:untitled/page/home.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:rive/rive.dart';
@@ -100,7 +101,7 @@ class _NavigationState extends State<Navigation> {
             Center(child: Home()),
             Center(child: Text("Search")),
             Center(child: Text("Favorite")),
-            Center(child: Text("Untitled")),
+            Center(child: Chat()),
             Center(child: Text("Settings")),
           ],
         ),
