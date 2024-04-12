@@ -54,7 +54,7 @@ class Home extends BaseStatelessWidget {
             color: Colors.white,
           ),
         ),
-        bottomSheet: const StockMarquee(),
+        // bottomSheet: const StockMarquee(),
         body: SingleChildScrollView(
           child: Column(
             children: <Widget>[

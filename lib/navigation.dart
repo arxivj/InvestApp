@@ -89,7 +89,7 @@ class _NavigationState extends State<Navigation> {
                     "Home",
                     "LIKE",
                     "Untitled",
-                    "Limited",
+                    "Chat",
                     "Settings"
                   ][index],
                 )),

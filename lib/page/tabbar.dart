@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:untitled/page/tabbar/accounts_widget.dart';
 
 class HomeTabBarWidget extends StatefulWidget {
   const HomeTabBarWidget({super.key});
@@ -63,7 +64,7 @@ class _HomeTabBarWidgetState extends State<HomeTabBarWidget>
         controller: _tabController,
         children: const <Widget>[
           Center(
-            child: Text("It's cloudy here"),
+            child: AccountsWidget(),
           ),
           Center(
             child: Text("It's rainy here"),
