@@ -12,7 +12,7 @@ class StockMarquee extends StatelessWidget {
     return Container(
       padding: EdgeInsets.only(top: 4),
       color: themeProvider.themeMode == ThemeMode.light
-          ? Color(0x3A30D5C8)
+          ? Colors.teal
           : Colors.black,
       height: 32,
       width: double.infinity,
@@ -21,7 +21,7 @@ class StockMarquee extends StatelessWidget {
         style: TextStyle(
             fontSize: 14,
             fontWeight: FontWeight.bold,
-            color: Theme.of(context).colorScheme.onSecondaryContainer),
+            color: Theme.of(context).colorScheme.primary),
         scrollAxis: Axis.horizontal,
         crossAxisAlignment: CrossAxisAlignment.start,
         blankSpace: 20.0,

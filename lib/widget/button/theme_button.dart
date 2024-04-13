@@ -41,7 +41,7 @@ class _ThemeButtonState extends State<ThemeButton> {
       child: SizedBox(
         height: 80.h,
         child: RiveAnimation.asset(
-          'assets/icons/switch.riv',
+          'assets/icons/theme_switch.riv',
           onInit: (artboard) {
             final controller = RiveUtils.getRiveController(artboard, stateMachineName: 'Button_Animation');
             artboard.addController(controller);

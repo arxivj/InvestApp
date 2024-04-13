@@ -30,12 +30,12 @@ class _HomeTabBarWidgetState extends State<HomeTabBarWidget>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        bottom: TabBar(
+        title:TabBar(
           controller: _tabController,
           enableFeedback: true,
           isScrollable: true,
           indicatorWeight: 3.0,
-          indicatorSize: TabBarIndicatorSize.values[0],
+          // indicatorSize: TabBarIndicatorSize.values[0],
           unselectedLabelStyle: const TextStyle(
             fontSize: 14.0,
             fontWeight: FontWeight.w500,

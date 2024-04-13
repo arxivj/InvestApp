@@ -1,43 +1,54 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:untitled/core/constants/app_padding.dart';
+import 'package:untitled/page/search_bar_widget.dart';
+import 'package:untitled/page/stockDetail/stock_detail_page.dart';
 import 'package:untitled/page/tabbar.dart';
-import '../based_stateless_page.dart';
 import '../widget/button/theme_button.dart';
 import '../widget/stock_marqee.dart';
 
-class Home extends BaseStatelessWidget {
+class Home extends StatelessWidget {
   const Home({super.key});
 
   @override
-  Widget buildPage(BuildContext context) {
-    final themeMode = Theme.of(context).brightness;
-    Color iconColor =
-        themeMode == Brightness.dark ? Colors.white : Colors.grey.shade500;
+  Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text('Home'),
+          backgroundColor: Theme.of(context).scaffoldBackgroundColor,
           centerTitle: true,
           elevation: 0,
-          leading: Container(
-            width: 40,
-            height: 40,
-            margin: const EdgeInsets.all(8),
-            decoration: BoxDecoration(
-              color: iconColor,
-              borderRadius: BorderRadius.circular(25),
+          leading: GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const StockDetailPage()),
+              );
+            },
+            child: Container(
+              width: 40,
+              height: 40,
+              margin: const EdgeInsets.all(8),
+              decoration: BoxDecoration(
+                color: Theme.of(context).inputDecorationTheme.prefixIconColor,
+                borderRadius: BorderRadius.circular(25),
+              ),
             ),
           ),
+          flexibleSpace: const Center(child: ThemeButton()),
           actions: [
             IconButton(
-                onPressed: () {},
-                icon: Icon(Icons.bar_chart_outlined),
-                iconSize: 24,
-                color: iconColor),
+              onPressed: () {},
+              icon: const Icon(Icons.search),
+              iconSize: 24,
+              color: Theme.of(context).inputDecorationTheme.prefixIconColor,
+            ),
             IconButton(
-                onPressed: () {},
-                icon: Icon(Icons.notifications),
-                iconSize: 24,
-                color: iconColor),
+              onPressed: () {},
+              icon: const Icon(Icons.notifications),
+              iconSize: 24,
+              color: Theme.of(context).inputDecorationTheme.prefixIconColor,
+            ),
           ],
         ),
         floatingActionButtonLocation: const _CustomFabLocation(
@@ -54,21 +65,122 @@ class Home extends BaseStatelessWidget {
             color: Colors.white,
           ),
         ),
-        // bottomSheet: const StockMarquee(),
+        bottomSheet: const StockMarquee(),
         body: SingleChildScrollView(
           child: Column(
-            children: <Widget>[
-              ThemeButton(),
+            children: [
+              SizedBox(
+                height: 8,
+              ),
               Container(
-                width: 1.sw,
-                height: 1.sh,
-                padding: const EdgeInsets.all(16),
-                child: const HomeTabBarWidget()
+                  color: Theme.of(context).scaffoldBackgroundColor,
+                  padding: AppPadding.horizontal16,
+                  child: const SearchBarWidget()),
+              SizedBox(
+                height: 16,
+              ),
+              Padding(
+                padding: AppPadding.horizontal16,
+                child: Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          'Popular',
+                          style: Theme.of(context).textTheme.headline6,
+                        ),
+                        TextButton(
+                          onPressed: () {},
+                          child: Text(
+                            'See all',
+                            style: Theme.of(context).textTheme.bodyText2,
+                          ),
+                        ),
+                      ],
+                    ),
+                    Container(
+                      decoration: BoxDecoration(
+                        color: Theme.of(context).colorScheme.onPrimary,
+                        borderRadius: BorderRadius.circular(24),
+                      ),
+                      width: 1.sw,
+                      height: 0.4.sh,
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: 24,
+              ),
+              Padding(
+                padding: AppPadding.horizontal16,
+                child: Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          'Popular',
+                          style: Theme.of(context).textTheme.headline6,
+                        ),
+                        TextButton(
+                          onPressed: () {},
+                          child: Text(
+                            'See all',
+                            style: Theme.of(context).textTheme.bodyText2,
+                          ),
+                        ),
+                      ],
+                    ),
+                    Container(
+                      decoration: BoxDecoration(
+                        color: Theme.of(context).colorScheme.onPrimary,
+                        borderRadius: BorderRadius.circular(24),
+                      ),
+                      width: 1.sw,
+                      height: 0.2.sh,
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: 24,
+              ),
+              Padding(
+                padding: AppPadding.horizontal16,
+                child: Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          'Popular',
+                          style: Theme.of(context).textTheme.headline6,
+                        ),
+                        TextButton(
+                          onPressed: () {},
+                          child: Text(
+                            'See all',
+                            style: Theme.of(context).textTheme.bodyText2,
+                          ),
+                        ),
+                      ],
+                    ),
+                    Container(
+                      decoration: BoxDecoration(
+                        color: Theme.of(context).colorScheme.onPrimary,
+                        borderRadius: BorderRadius.circular(24),
+                      ),
+                      width: 1.sw,
+                      height: 0.3.sh,
+                    ),
+                  ],
+                ),
               ),
             ],
           ),
-        )
-    );
+        ));
   }
 }
 
