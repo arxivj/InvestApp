@@ -34,6 +34,8 @@ migrate_working_dir/
 # 환경 설정 파일 제외
 /assets/config.json
 
+.env
+
 # Symbolication related
 app.*.symbols
 

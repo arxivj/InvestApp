@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/services.dart' show rootBundle;
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'flutter_secure_storage.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:http/http.dart' as http;
 
 Future<void> koreaInvestmentLoadConfig() async {
@@ -28,16 +28,13 @@ Future<void> setupSecureStorage() async {
 
 class AuthService {
   final SecureStorage _secureStorage = SecureStorage();
-  final _tokenUrl = 'https://openapi.koreainvestment.com:9443/oauth2/tokenP';
+  final _tokenUrl = dotenv.env['TOKEN_URL']!;
 
   Future<void> requestAndStoreToken() async {
-    final configString = await rootBundle.loadString('assets/config.json');
-    final configJson = jsonDecode(configString);
-
     final body = jsonEncode({
-      "grant_type": configJson['grant_type'],
-      "appkey": configJson['appkey'],
-      "appsecret": configJson['appsecret'],
+      "grant_type": dotenv.env['GRANT_TYPE']!,
+      "appkey": dotenv.env['APP_KEY']!,
+      "appsecret": dotenv.env['APP_SECRET']!,
     });
 
     final headers = {'Content-Type': 'application/json; charset=UTF-8'};
@@ -69,30 +66,31 @@ class AuthService {
   }
 
   Future<void> revokeToken() async {
-    final configString = await rootBundle.loadString('assets/config.json');
-    final configJson = jsonDecode(configString);
     final token = await _secureStorage.readSecureData('access_token');
-    const revokeUrl = 'https://openapi.koreainvestment.com:9443/oauth2/revokeP';
-    final appkey = configJson['appkey'];
-    final appsecret = configJson['appsecret'];
+    final revokeUrl = dotenv.env['REVOKE_URL']!;
+    final appKey = dotenv.env['APP_KEY']!;
+    final appSecret = dotenv.env['APP_SECRET']!;
 
     final headers = {'Content-Type': 'application/json; charset=UTF-8'};
 
     final body = jsonEncode({
-      "appkey": appkey,
-      "appsecret": appsecret,
+      "appkey": appKey,
+      "appsecret": appSecret,
       "token": token,
     });
-
-    final response = await http.post(
-      Uri.parse(revokeUrl),
-      headers: headers,
-      body: body,
-    );
-    if (response.statusCode == 200) {
-      print('Token successfully revoked: ${response.body}');
-    } else {
-      print('Failed to revoke token: ${response.body}');
+    try {
+      final response = await http.post(
+        Uri.parse(revokeUrl),
+        headers: headers,
+        body: body,
+      );
+      if (response.statusCode == 200) {
+        print('Token successfully revoked');
+      } else {
+        print('Failed to revoke token: ${response.body}');
+      }
+    } catch (e) {
+      print('Exception caught: $e');
     }
   }
 }
