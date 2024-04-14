@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:marquee/marquee.dart';
 import 'package:provider/provider.dart';
 import '../provider/theme_provider.dart'; // ThemeProvider 위치에 따라 경로 변경 필요
@@ -11,7 +12,7 @@ class StockMarquee extends StatelessWidget {
     final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
     return Container(
       padding: EdgeInsets.only(top: 4),
-      height: 32,
+      height: 24.h,
       width: double.infinity,
       decoration: BoxDecoration(
         color: themeProvider.themeMode == ThemeMode.light
@@ -28,8 +29,8 @@ class StockMarquee extends StatelessWidget {
       child: Marquee(
         text: 'Nasdaq 12345 - S&P500 678910 - KOSPI 00000',
         style: TextStyle(
-            fontSize: 14,
-            fontWeight: FontWeight.bold,
+            fontSize: 12.sp,
+            fontWeight: FontWeight.w500,
             color: Theme.of(context).colorScheme.primary),
         scrollAxis: Axis.horizontal,
         crossAxisAlignment: CrossAxisAlignment.start,

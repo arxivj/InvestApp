@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:untitled/utils/korea_investment_config.dart';
+import '../../utils/korea_investment_service.dart';
 
 class SettingsPage extends StatelessWidget {
   const SettingsPage({super.key});
@@ -9,10 +9,6 @@ class SettingsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
-          onPressed: () => Navigator.pop(context),
-        ),
         title: const Text('Settings'),
       ),
       body: SingleChildScrollView(
@@ -22,6 +18,16 @@ class SettingsPage extends StatelessWidget {
             AccountDetailsSection(),
             SettingsOptions(),
             LogoutButton(),
+            SizedBox(height: 20.h),
+            Divider(
+              thickness: 5,
+              height: 5,
+              color: Theme.of(context).colorScheme.onPrimary,
+            ),
+            SizedBox(height: 20.h),
+            Text('Test Button', style: Theme.of(context).textTheme.headline6),
+            SizedBox(height: 20.h),
+            TestButton(),
             SizedBox(height: 20.h),
           ],
         ),
@@ -44,7 +50,10 @@ class ProfileHeader extends StatelessWidget {
           CircleAvatar(
             radius: 40.sp, // Profile picture size
             backgroundColor: Colors.blue,
-            child: Text('@', style: TextStyle(fontSize: 24.sp, color: Colors.white)), // Placeholder for profile picture
+            child: Text('@',
+                style: TextStyle(
+                    fontSize: 24.sp,
+                    color: Colors.white)), // Placeholder for profile picture
           ),
           SizedBox(width: 10.w),
           Column(
@@ -146,12 +155,6 @@ class SettingsOptions extends StatelessWidget {
             icon: Icons.settings,
             text: 'App settings',
           ),
-          TextButton(
-            onPressed: () {
-              AuthService().requestAndStoreToken();
-            },
-            child: Text('토큰발급 테스트 버튼'),
-          ),
         ],
       ),
     );
@@ -162,7 +165,7 @@ class SettingsOptionRow extends StatelessWidget {
   final IconData icon;
   final String text;
 
-  const SettingsOptionRow({required this.icon, required this.text});
+  const SettingsOptionRow({super.key, required this.icon, required this.text});
 
   @override
   Widget build(BuildContext context) {
@@ -180,9 +183,32 @@ class LogoutButton extends StatelessWidget {
     return ListTile(
       leading: const Icon(Icons.logout),
       title: const Text('Log out'),
-      onTap: () {
-        AuthService().revokeToken();
-      },
+      onTap: () {},
+    );
+  }
+}
+
+class TestButton extends StatelessWidget {
+  const TestButton({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        ElevatedButton(
+          onPressed: () async {
+            await AuthService().requestAndStoreToken();
+          },
+          child: const Text('Request token'),
+        ),
+        ElevatedButton(
+          onPressed: () async {
+            await AuthService().revokeToken();
+          },
+          child: const Text('Revoke token'),
+        ),
+      ],
     );
   }
 }
