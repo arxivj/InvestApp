@@ -50,10 +50,7 @@ PreferredSizeWidget homeAppBar(BuildContext context) {
             //     ),
             //   ),
             // ),
-            Container(
-              width: 200,
-              child: ThemeButton(),
-            ),
+            ThemeButton(),
             Row(
               children: [
                 GestureDetector(

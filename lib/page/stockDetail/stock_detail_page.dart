@@ -32,7 +32,7 @@ class _StockDetailPageState extends State<StockDetailPage> {
                     expandedHeight: 192.h,
                     forceElevated: innerBoxIsScrolled,
                     elevation: 0,
-                    backgroundColor: Colors.white,
+                    backgroundColor: Colors.transparent,
                     leading: IconButton(
                       onPressed: () {
                         Navigator.pop(context);

@@ -17,7 +17,7 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
     return Column(
       children: [
         SizedBox(
-          height: 32.h,
+          height: 40.h,
           child: SearchAnchor(
               builder: (BuildContext context, SearchController controller) {
             return SearchBar(

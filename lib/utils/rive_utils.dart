@@ -2,11 +2,15 @@ import 'package:rive/rive.dart';
 
 class RiveUtils {
   static StateMachineController getRiveController(Artboard artboard,
-      {stateMachineName = "State Machine 1"}) {
+      {String stateMachineName = 'State Machine 1'}) {
     StateMachineController? controller =
-        StateMachineController.fromArtboard(artboard, stateMachineName);
-    artboard.addController(controller!);
-    return controller;
+    StateMachineController.fromArtboard(artboard, stateMachineName);
+    if (controller != null) {
+      artboard.addController(controller);
+      return controller;
+    } else {
+      throw Exception('Failed to find the state machine controller');
+    }
   }
 
   static void triggerInput(StateMachineController controller, String inputName) {
@@ -15,5 +19,4 @@ class RiveUtils {
       input.value = !input.value;
     }
   }
-
 }

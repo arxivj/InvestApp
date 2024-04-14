@@ -25,7 +25,7 @@ Widget StockFlexibleSpaceBar(context) {
                         Text(
                           "Apple",
                           style: TextStyle(
-                            color: Colors.black,
+                            color: Theme.of(context).colorScheme.primary,
                             fontSize: 24.sp,
                             fontWeight: FontWeight.w500,
                           ),
