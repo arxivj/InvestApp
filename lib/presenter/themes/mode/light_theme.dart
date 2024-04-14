@@ -15,7 +15,7 @@ class LightAppTheme extends AppTheme {
       secondary: Color(0xFF6C79DB),
       accent: Color(0xFF27C754),
       background: Color(0xFFF7F7F7),
-      backgroundDark: Color(0xFFEEEEEE),
+      backgroundDark: Color(0xFFedeff3),
       disabled: Color(0xFFCCCCCC),
       information: Color(0xFF6C79DB),
       success: Color(0xFF4CAF50),

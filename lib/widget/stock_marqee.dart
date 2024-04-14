@@ -11,11 +11,20 @@ class StockMarquee extends StatelessWidget {
     final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
     return Container(
       padding: EdgeInsets.only(top: 4),
-      color: themeProvider.themeMode == ThemeMode.light
-          ? Colors.teal
-          : Colors.black,
       height: 32,
       width: double.infinity,
+      decoration: BoxDecoration(
+        color: themeProvider.themeMode == ThemeMode.light
+            ? Colors.white
+            : Colors.black,
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.1),
+            offset: const Offset(0, 1),
+            blurRadius: 2,
+          ),
+        ],
+      ),
       child: Marquee(
         text: 'Nasdaq 12345 - S&P500 678910 - KOSPI 00000',
         style: TextStyle(

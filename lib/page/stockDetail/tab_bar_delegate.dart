@@ -4,66 +4,38 @@ class TabBarDelegate extends SliverPersistentHeaderDelegate {
   const TabBarDelegate();
 
   @override
-  Widget build(
-      BuildContext context, double shrinkOffset, bool overlapsContent) {
+  Widget build(BuildContext context, double shrinkOffset, bool overlapsContent) {
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 8),
-      color: const Color(0xFFF7F7F7),
+      color: Theme.of(context).scaffoldBackgroundColor,
       child: TabBar(
         padding: const EdgeInsets.symmetric(horizontal: 12),
         labelPadding: const EdgeInsets.symmetric(horizontal: 4),
         indicator: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
-          color: Colors.white,
+          color: Theme.of(context).colorScheme.onPrimary,
         ),
         isScrollable: true,
-        tabs: [
-          Tab(
-            child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
-              child: const Text(
-                "Overview",
-              ),
-            ),
-          ),
-          Tab(
-            child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
-              child: const Text(
-                "Financials",
-              ),
-            ),
-          ),
-          Tab(
-            child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
-              child: const Text(
-                "News",
-              ),
-            ),
-          ),
-          Tab(
-            child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
-              child: const Text(
-                "Orders",
-              ),
-            ),
-          ),
-          Tab(
-            child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
-              child: const Text(
-                "Trading",
-              ),
-            ),
-          ),
-        ],
+        tabs: _buildTabs(),
         indicatorWeight: 0,
-        unselectedLabelColor: Color(0xFF7A7E89),
+        unselectedLabelColor: const Color(0xFF7A7E89),
         labelColor: Colors.black,
         indicatorColor: Colors.black,
         indicatorSize: TabBarIndicatorSize.label,
+      ),
+    );
+  }
+
+  List<Widget> _buildTabs() {
+    List<String> tabTitles = ["Overview", "Financials", "News", "Orders", "Trading"];
+    return tabTitles.map((title) => _buildTab(title)).toList();
+  }
+
+  Widget _buildTab(String title) {
+    return Tab(
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+        child: Text(title),
       ),
     );
   }
