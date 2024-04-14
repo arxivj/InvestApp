@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:untitled/page/chat.dart';
-import 'package:untitled/page/home.dart';
+import 'package:untitled/page/home/home.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:rive/rive.dart';
 import 'package:untitled/utils/rive_utils.dart';

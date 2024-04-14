@@ -4,8 +4,8 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:untitled/core/constants/app_padding.dart';
 import 'package:untitled/page/search_bar_widget.dart';
-import 'package:untitled/page/tabbar/accounts_widget.dart';
-import 'package:untitled/page/tabbar/custom_tab_bar_delegate.dart';
+import 'package:untitled/page/home/home_widget/accounts_widget.dart';
+import 'package:untitled/page/home/custom_tab_bar_delegate.dart';
 import 'package:untitled/widget/stock_marqee.dart';
 import 'home_appbar.dart';
 

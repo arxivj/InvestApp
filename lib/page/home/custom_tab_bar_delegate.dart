@@ -1,18 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:untitled/provider/theme_provider.dart';
 
-import 'accounts_widget.dart';
+import 'home_widget/accounts_widget.dart';
 
 class CustomTabBarDelegate extends SliverPersistentHeaderDelegate {
   @override
   double get minExtent => 48;
-
   @override
   double get maxExtent => 48;
 
   @override
-  Widget build(
-      BuildContext context, double shrinkOffset, bool overlapsContent) {
+  Widget build(BuildContext context, double shrinkOffset, bool overlapsContent) {
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 8),
       color: Theme.of(context).scaffoldBackgroundColor,
@@ -26,46 +23,28 @@ class CustomTabBarDelegate extends SliverPersistentHeaderDelegate {
         isScrollable: true,
         tabs: _buildTabs(context),
         indicatorWeight: 0,
-        unselectedLabelColor: const Color(0xFF7A7E89),
-        labelColor: Colors.black,
-        indicatorColor: Colors.black,
+        unselectedLabelColor: Colors.grey, // Set to grey to differentiate from selected tabs
+        labelColor: Theme.of(context).colorScheme.onSurface, // Ensured contrast with the unselected tabs
+        indicatorColor: Theme.of(context).colorScheme.secondary,
         indicatorSize: TabBarIndicatorSize.label,
       ),
     );
   }
 
-  @override
-  bool shouldRebuild(CustomTabBarDelegate oldDelegate) => false;
-
   List<Widget> _buildTabs(BuildContext context) {
-    List<String> tabTitles = [
-      "Accounts",
-      "Stocks",
-      "News",
-      "Untitled",
-      "Untitled"
-    ];
-    return tabTitles
-        .map((title) => Tab(child: _buildTabContent(context, title)))
-        .toList();
+    List<String> tabTitles = ["Accounts", "Stocks", "News", "Untitled", "Untitled"];
+    return tabTitles.map((title) => Tab(child: _buildTabContent(context, title))).toList();
   }
 
   Widget _buildTabContent(BuildContext context, String title) {
-    Color fontColor = Theme.of(context).brightness == Brightness.light
-        ? Colors.black
-        : Colors.white;
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
-      child: Text(
-        title,
-        style: TextStyle(
-          fontSize: 14,
-          fontWeight: FontWeight.w500,
-          color: fontColor,
-        ),
-      ),
+      child: Text(title),
     );
   }
+
+  @override
+  bool shouldRebuild(CustomTabBarDelegate oldDelegate) => false;
 }
 
 // 홈에서 탭바를 선택시 나타날 위젯 세팅 (home - body에서 사용 중)

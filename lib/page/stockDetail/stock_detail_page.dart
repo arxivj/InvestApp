@@ -38,7 +38,7 @@ class _StockDetailPageState extends State<StockDetailPage> {
                         Navigator.pop(context);
                       },
                       icon: Icon(
-                        Icons.arrow_back_ios,
+                        Icons.arrow_back_ios_new,
                         color: Theme.of(context).inputDecorationTheme.prefixIconColor,
                       ),
                     ),

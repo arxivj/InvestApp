@@ -2,8 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../core/constants/app_padding.dart';
-import 'grid_item_widget.dart';
+import '../../../core/constants/app_padding.dart';
+import '../../tabbar/grid_item_widget.dart';
 
 class AccountsWidget extends StatelessWidget {
   const AccountsWidget({super.key});

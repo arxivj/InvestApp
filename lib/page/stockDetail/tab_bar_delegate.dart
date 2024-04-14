@@ -16,22 +16,22 @@ class TabBarDelegate extends SliverPersistentHeaderDelegate {
           color: Theme.of(context).colorScheme.onPrimary,
         ),
         isScrollable: true,
-        tabs: _buildTabs(),
+        tabs: _buildTabs(context),
         indicatorWeight: 0,
-        unselectedLabelColor: const Color(0xFF7A7E89),
-        labelColor: Colors.black,
-        indicatorColor: Colors.black,
+        unselectedLabelColor: Theme.of(context).hintColor, // Adjusted for better visibility
+        labelColor: Theme.of(context).colorScheme.onSurface, // Use onSurface for better theme adaptation
+        indicatorColor: Theme.of(context).colorScheme.secondary,
         indicatorSize: TabBarIndicatorSize.label,
       ),
     );
   }
 
-  List<Widget> _buildTabs() {
+  List<Widget> _buildTabs(BuildContext context) {
     List<String> tabTitles = ["Overview", "Financials", "News", "Orders", "Trading"];
-    return tabTitles.map((title) => _buildTab(title)).toList();
+    return tabTitles.map((title) => _buildTab(context, title)).toList();
   }
 
-  Widget _buildTab(String title) {
+  Widget _buildTab(BuildContext context, String title) {
     return Tab(
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
@@ -47,7 +47,5 @@ class TabBarDelegate extends SliverPersistentHeaderDelegate {
   double get minExtent => 48;
 
   @override
-  bool shouldRebuild(covariant SliverPersistentHeaderDelegate oldDelegate) {
-    return false;
-  }
+  bool shouldRebuild(covariant SliverPersistentHeaderDelegate oldDelegate) => false;
 }
