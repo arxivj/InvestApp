@@ -58,7 +58,7 @@ flutter:
     - assets/icons/
     - assets/icons/symbols/
     - assets/icons/countries/
-
+    - assets/config.json
   fonts:
     - family: CircularStd
       fonts:
