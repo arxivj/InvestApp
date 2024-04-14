@@ -40,6 +40,16 @@ app.*.symbols
 # Obfuscation related
 app.*.map.json
 
+**/cmake/**
+**/*.cmake
+
+**/swift/**
+**/*.swift
+
+**/cc/**
+**/*.cc
+
+
 # Android Studio will place build artifacts here
 /android/app/debug
 /android/app/profile

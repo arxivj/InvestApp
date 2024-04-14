@@ -3,6 +3,7 @@ import 'package:untitled/page/chat.dart';
 import 'package:untitled/page/home/home.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:rive/rive.dart';
+import 'package:untitled/page/settings/settings_page.dart';
 import 'package:untitled/utils/rive_utils.dart';
 
 class IconController {
@@ -102,7 +103,7 @@ class _NavigationState extends State<Navigation> {
             Center(child: Text("Search")),
             Center(child: Text("Favorite")),
             Center(child: Chat()),
-            Center(child: Text("Settings")),
+            Center(child: SettingsPage()),
           ],
         ),
       ),
