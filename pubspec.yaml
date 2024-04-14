@@ -57,6 +57,7 @@ flutter:
     - assets/images/
     - assets/icons/
     - assets/icons/symbols/
+    - assets/icons/countries/
 
   fonts:
     - family: CircularStd

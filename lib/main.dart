@@ -1,7 +1,7 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:untitled/color/app_colors.dart';
+import 'package:untitled/presenter/colors/app_colors.dart';
 import 'package:untitled/presenter/themes/mode/dark_theme.dart';
 import 'package:untitled/presenter/themes/mode/light_theme.dart';
 import 'package:untitled/provider/theme_provider.dart';

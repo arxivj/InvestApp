@@ -62,7 +62,7 @@ class _HomeTabBarWidgetState extends State<HomeTabBarWidget>
       ),
       body: TabBarView(
         controller: _tabController,
-        children: const <Widget>[
+        children: <Widget>[
           Center(
             child: AccountsWidget(),
           ),

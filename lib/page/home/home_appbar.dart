@@ -42,15 +42,10 @@ PreferredSizeWidget homeAppBar(BuildContext context) {
                 ],
               ),
             ),
-            // Expanded(
-            //   child: Container(
-            //     decoration: const BoxDecoration(
-            //       color: Colors.transparent,
-            //       shape: BoxShape.rectangle,
-            //     ),
-            //   ),
-            // ),
-            ThemeButton(),
+            const Padding(
+              padding: EdgeInsets.only(left: 26),
+              child: ThemeButton(),
+            ),
             Row(
               children: [
                 GestureDetector(
