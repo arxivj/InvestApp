@@ -4,7 +4,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
 import 'package:untitled/utils/korea_investment_config.dart';
 import 'package:untitled/utils/korea_investment_service.dart';
-import '../page/investment_data.dart';
+import '../models/investment_data.dart';
 import 'flutter_secure_storage.dart';
 
 class InquireService with ChangeNotifier {

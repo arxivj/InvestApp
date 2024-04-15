@@ -61,7 +61,6 @@ flutter:
     - assets/icons/
     - assets/icons/symbols/
     - assets/icons/countries/
-    - assets/config.json
     - .env
   fonts:
     - family: CircularStd
