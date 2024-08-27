@@ -42,7 +42,7 @@ class AccountDetailsCard extends StatelessWidget {
           Row(
             children: [
               Text('12345678-01 위탁계좌',
-                  style: Theme.of(context).textTheme.headline6?.copyWith(
+                  style: Theme.of(context).textTheme.headlineMedium?.copyWith(
                       fontWeight: FontWeight.normal,
                       color: Theme.of(context).hintColor,
                       fontSize: 11.sp)),
@@ -122,11 +122,11 @@ class AccountDataRow extends StatelessWidget {
       children: [
         Text(
           label,
-          style: Theme.of(context).textTheme.bodyText1,
+          style: Theme.of(context).textTheme.bodyMedium,
         ),
         Text(
           value,
-          style: Theme.of(context).textTheme.bodyText1,
+          style: Theme.of(context).textTheme.bodyMedium,
         ),
       ],
     );
@@ -203,7 +203,7 @@ class ActionItemsSection extends StatelessWidget {
         children: [
           Text(
             'Actions',
-            style: Theme.of(context).textTheme.headline6,
+            style: Theme.of(context).textTheme.headlineMedium,
           ),
           const SizedBox(height: 16),
           Container(

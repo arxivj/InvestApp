@@ -25,7 +25,7 @@ class SettingsPage extends StatelessWidget {
               color: Theme.of(context).colorScheme.onPrimary,
             ),
             SizedBox(height: 20.h),
-            Text('Test Button', style: Theme.of(context).textTheme.headline6),
+            Text('Test Button', style: Theme.of(context).textTheme.headlineMedium),
             SizedBox(height: 20.h),
             TestButton(),
             SizedBox(height: 20.h),
@@ -79,7 +79,7 @@ class AccountDetailsSection extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text('Account Details', style: Theme.of(context).textTheme.headline6),
+          Text('Account Details', style: Theme.of(context).textTheme.headlineMedium),
           Divider(),
           AccountDetailRow(
             label: 'Name',

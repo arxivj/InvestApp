@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:untitled/presenter/colors/app_theme_colors.dart';
 import '../colors/app_colors.dart';
 import '../fonts.gen.dart';
 import 'app_theme_style.dart';
 import 'app_theme_typography.dart';
 
 class AppTheme extends ThemeExtension<AppTheme> {
+  // ThemeExtension<T>는 플러터의 테마 시스템을 확장할 때 사용하는 클래스 
+  // ThemeExtension을 통해 기본 제공되는 테마옵션 외에 추가적인 테마 옵션 정의 가능 
+  // AppTheme를 통해 커스텀 테마를 정의하고, light, dark theme에서 구체화
   final String name;
   final String fontFamily;
   final Brightness brightness;
@@ -110,8 +114,8 @@ class AppTheme extends ThemeExtension<AppTheme> {
                   : null; // Defer to the widget's default.
             }),
             foregroundColor:
-                MaterialStateProperty.resolveWith((Set<MaterialState> states) {
-              return states.contains(MaterialState.disabled)
+                WidgetStateProperty.resolveWith((Set<MaterialState> states) {
+              return states.contains(WidgetState.disabled)
                   ? colors.disabled
                   : null; // Defer to the widget's default.
             }),

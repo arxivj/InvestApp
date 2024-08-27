@@ -34,8 +34,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Untitled',
-      theme: const LightAppTheme().themeData,
-      darkTheme: const DarkAppTheme().themeData,
+      theme: LightAppTheme().themeData,
+      darkTheme: DarkAppTheme().themeData,
       themeMode: themeProvider.themeMode,
       home: const Root(),
       scrollBehavior: AppScrollBehavior(),
