@@ -1,11 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:untitled/page/stockDetail/first_tab_screen.dart';
 import 'package:untitled/page/stockDetail/stock_flexible_space_bar.dart';
 import 'package:untitled/page/stockDetail/tab_bar_delegate.dart';
-
-import 'first_tab_screen.dart';
 
 class StockDetailPage extends StatefulWidget {
   const StockDetailPage({super.key});
@@ -27,43 +24,52 @@ class _StockDetailPageState extends State<StockDetailPage> {
             headerSliverBuilder: (context, innerBoxIsScrolled) {
               return [
                 SliverAppBar(
-                    pinned: true,
-                    floating: false,
-                    expandedHeight: 192.h,
-                    forceElevated: innerBoxIsScrolled,
-                    elevation: 0,
-                    backgroundColor: Colors.transparent,
-                    leading: IconButton(
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
+                  pinned: true,
+                  floating: false,
+                  expandedHeight: 192.h,
+                  forceElevated: innerBoxIsScrolled,
+                  elevation: 0,
+                  backgroundColor: Colors.transparent,
+                  leading: IconButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    icon: Icon(
+                      Icons.arrow_back_ios_new,
+                      color: Theme.of(context)
+                          .inputDecorationTheme
+                          .prefixIconColor,
+                    ),
+                  ),
+                  actions: [
+                    IconButton(
+                      onPressed: () {},
                       icon: Icon(
-                        Icons.arrow_back_ios_new,
-                        color: Theme.of(context).inputDecorationTheme.prefixIconColor,
+                        Icons.notifications_none,
+                        color: Theme.of(context)
+                            .inputDecorationTheme
+                            .prefixIconColor,
                       ),
                     ),
-                    actions: [
-                      IconButton(
-                        onPressed: () {},
-                        icon: Icon(
-                          Icons.notifications_none,
-                          color: Theme.of(context).inputDecorationTheme.prefixIconColor,
-                        ),
+                    IconButton(
+                      onPressed: () {},
+                      icon: Icon(
+                        Icons.star_border,
+                        color: Theme.of(context)
+                            .inputDecorationTheme
+                            .prefixIconColor,
                       ),
-                      IconButton(
-                        onPressed: () {},
-                        icon: Icon(
-                          Icons.star_border,
-                          color: Theme.of(context).inputDecorationTheme.prefixIconColor,
-                        ),
-                      ),
-                    ],
-                    flexibleSpace: StockFlexibleSpaceBar(context)),
+                    ),
+                  ],
+                  flexibleSpace: stockFlexibleSpaceBar(context),
+                ),
                 SliverOverlapAbsorber(
                   handle:
                       NestedScrollView.sliverOverlapAbsorberHandleFor(context),
                   sliver: const SliverPersistentHeader(
-                      pinned: true, delegate: TabBarDelegate()),
+                    pinned: true,
+                    delegate: TabBarDelegate(),
+                  ),
                 ),
               ];
             },

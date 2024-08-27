@@ -2,16 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
-import '../../provider/theme_provider.dart';
+import 'package:untitled/provider/theme_provider.dart';
 
 class FirstTabScreen extends StatelessWidget {
-  const FirstTabScreen({Key? key}) : super(key: key);
+  const FirstTabScreen({super.key});
 
   Widget _buildItem(BuildContext context, int index) {
     if (index.isEven) {
-      String title = "Section $index";
+      String title = 'Section $index';
       String content =
-          "Apple Inc. is an American multinational technology company that specializes in consumer electronics, computer software, and online services. Content for section $index. This is a placeholder.";
+          'Apple Inc. is an American multinational technology company that specializes in consumer electronics, computer software, and online services. Content for section $index. This is a placeholder.';
       return Container(
         padding: const EdgeInsets.symmetric(horizontal: 16),
         child: Container(
@@ -45,13 +45,13 @@ class FirstTabScreen extends StatelessWidget {
     } else {
       final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
       return Padding(
-        padding: EdgeInsets.symmetric(vertical: 16),
+        padding: const EdgeInsets.symmetric(vertical: 16),
         child: Divider(
           height: 6,
           thickness: 6,
           color: themeProvider.themeMode == ThemeMode.light
-              ? Color(0xFFEEEEEE)
-              : Color(0xFF202020),
+              ? const Color(0xFFEEEEEE)
+              : const Color(0xFF202020),
         ),
       );
     }

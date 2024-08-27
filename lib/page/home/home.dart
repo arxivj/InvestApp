@@ -1,15 +1,11 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:untitled/core/constants/app_padding.dart';
-import 'package:untitled/page/home/search_bar_widget.dart';
 import 'package:untitled/page/home/custom_tab_bar_delegate.dart';
-import 'package:untitled/widget/stock_marqee.dart';
-import 'home_appbar.dart';
+import 'package:untitled/page/home/home_appbar.dart';
+import 'package:untitled/page/home/search_bar_widget.dart';
 
 class Home extends StatelessWidget {
-  const Home({Key? key}) : super(key: key);
+  const Home({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -46,11 +42,11 @@ class Home extends StatelessWidget {
   }
 }
 
-class _CustomFabLocation extends FloatingActionButtonLocation {
+class CustomFabLocation extends FloatingActionButtonLocation {
   final FloatingActionButtonLocation location;
   final double offsetY;
 
-  const _CustomFabLocation(this.location, this.offsetY);
+  const CustomFabLocation(this.location, this.offsetY);
 
   @override
   Offset getOffset(ScaffoldPrelayoutGeometry scaffoldGeometry) {

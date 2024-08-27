@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import '../../../core/constants/app_padding.dart';
+import 'package:untitled/core/constants/app_padding.dart';
 
 class AccountsWidget extends StatelessWidget {
   const AccountsWidget({super.key});
@@ -13,12 +12,12 @@ class AccountsWidget extends StatelessWidget {
         child: Column(
           children: [
             const SizedBox(height: 16),
-            Padding(
+            const Padding(
               padding: AppPadding.horizontal16,
               child: AccountDetailsCard(),
             ),
             SizedBox(height: 32.h),
-            ActionItemsSection(),
+            const ActionItemsSection(),
             SizedBox(height: 40.h),
           ],
         ),
@@ -28,6 +27,8 @@ class AccountsWidget extends StatelessWidget {
 }
 
 class AccountDetailsCard extends StatelessWidget {
+  const AccountDetailsCard({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -41,11 +42,14 @@ class AccountDetailsCard extends StatelessWidget {
         children: [
           Row(
             children: [
-              Text('12345678-01 위탁계좌',
-                  style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+              Text(
+                '12345678-01 위탁계좌',
+                style: Theme.of(context).textTheme.headlineMedium?.copyWith(
                       fontWeight: FontWeight.normal,
                       color: Theme.of(context).hintColor,
-                      fontSize: 11.sp)),
+                      fontSize: 11.sp,
+                    ),
+              ),
               Container(
                 padding: EdgeInsets.only(left: 4.sp),
                 child: Icon(
@@ -53,7 +57,7 @@ class AccountDetailsCard extends StatelessWidget {
                   color: Theme.of(context).hintColor,
                   size: 14.sp,
                 ),
-              )
+              ),
             ],
           ),
           Row(
@@ -67,26 +71,29 @@ class AccountDetailsCard extends StatelessWidget {
                 ),
               ),
               IconButton(
-                  onPressed: () {},
-                  icon: Container(
-                    decoration: BoxDecoration(
-                      color: Theme.of(context).colorScheme.secondary,
-                      shape: BoxShape.circle,
-                    ),
-                    padding: EdgeInsets.all(4.sp),
-                    child: Icon(
-                      Icons.arrow_drop_down,
-                      color: Theme.of(context).highlightColor,
-                      size: 16.sp,
-                    ),
-                  )),
+                onPressed: () {},
+                icon: Container(
+                  decoration: BoxDecoration(
+                    color: Theme.of(context).colorScheme.secondary,
+                    shape: BoxShape.circle,
+                  ),
+                  padding: EdgeInsets.all(4.sp),
+                  child: Icon(
+                    Icons.arrow_drop_down,
+                    color: Theme.of(context).highlightColor,
+                    size: 16.sp,
+                  ),
+                ),
+              ),
             ],
           ),
-          Text('Korea Won (KRW)',
-              style: TextStyle(
-                fontSize: 11.sp,
-                color: Theme.of(context).hintColor,
-              )),
+          Text(
+            'Korea Won (KRW)',
+            style: TextStyle(
+              fontSize: 11.sp,
+              color: Theme.of(context).hintColor,
+            ),
+          ),
           // const SizedBox(height: 8),
           // Text(
           //   '-2,046원 | -5.17%',
@@ -101,7 +108,7 @@ class AccountDetailsCard extends StatelessWidget {
           // AccountDataRow('손익금액', '-2,046원'),
           // AccountDataRow('출금가능금액', '0원'),
           const SizedBox(height: 16),
-          ActionButtonsBar(),
+          const ActionButtonsBar(),
           const SizedBox(height: 8),
         ],
       ),
@@ -113,7 +120,7 @@ class AccountDataRow extends StatelessWidget {
   final String label;
   final String value;
 
-  AccountDataRow(this.label, this.value);
+  const AccountDataRow(this.label, this.value, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -134,9 +141,11 @@ class AccountDataRow extends StatelessWidget {
 }
 
 class ActionButtonsBar extends StatelessWidget {
+  const ActionButtonsBar({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return Padding(
+    return const Padding(
       padding: AppPadding.horizontal16,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -155,7 +164,7 @@ class ActionButton extends StatelessWidget {
   final String title;
   final IconData icon;
 
-  ActionButton({required this.title, required this.icon});
+  const ActionButton({required this.title, required this.icon, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -169,7 +178,7 @@ class ActionButton extends StatelessWidget {
             backgroundColor: Theme.of(context).colorScheme.secondary,
             padding: EdgeInsets.all(15.sp),
             // Adjust padding to scale the circular button
-            shape: CircleBorder(),
+            shape: const CircleBorder(),
           ),
           child: Icon(
             icon,
@@ -255,7 +264,7 @@ class ActionItemsSection extends StatelessWidget {
                           ),
                         ),
                       ],
-                    )
+                    ),
                   ],
                 ),
                 Column(

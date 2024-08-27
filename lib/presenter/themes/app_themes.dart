@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:untitled/presenter/colors/app_theme_colors.dart';
-import '../colors/app_colors.dart';
-import '../fonts.gen.dart';
-import 'app_theme_style.dart';
-import 'app_theme_typography.dart';
+import 'package:untitled/presenter/fonts.gen.dart';
+import 'package:untitled/presenter/themes/app_theme_style.dart';
+import 'package:untitled/presenter/themes/app_theme_typography.dart';
 
 class AppTheme extends ThemeExtension<AppTheme> {
-  // ThemeExtension<T>는 플러터의 테마 시스템을 확장할 때 사용하는 클래스 
-  // ThemeExtension을 통해 기본 제공되는 테마옵션 외에 추가적인 테마 옵션 정의 가능 
+  // ThemeExtension<T>는 플러터의 테마 시스템을 확장할 때 사용하는 클래스
+  // ThemeExtension을 통해 기본 제공되는 테마옵션 외에 추가적인 테마 옵션 정의 가능
   // AppTheme를 통해 커스텀 테마를 정의하고, light, dark theme에서 구체화
   final String name;
   final String fontFamily;
@@ -65,13 +64,13 @@ class AppTheme extends ThemeExtension<AppTheme> {
         ),
         filledButtonTheme: FilledButtonThemeData(
           style: styles.buttonLarge.copyWith(
-            backgroundColor: MaterialStateProperty.resolveWith((states) {
-              return states.contains(MaterialState.disabled)
+            backgroundColor: WidgetStateProperty.resolveWith((states) {
+              return states.contains(WidgetState.disabled)
                   ? colors.disabled
                   : null; // Defer to the widget's default.
             }),
-            foregroundColor: MaterialStateProperty.resolveWith((states) {
-              return states.contains(MaterialState.disabled)
+            foregroundColor: WidgetStateProperty.resolveWith((states) {
+              return states.contains(WidgetState.disabled)
                   ? colors.disabled
                   : null; // Defer to the widget's default.
             }),
@@ -79,13 +78,13 @@ class AppTheme extends ThemeExtension<AppTheme> {
         ),
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: styles.buttonLarge.copyWith(
-            backgroundColor: MaterialStateProperty.resolveWith((states) {
-              return states.contains(MaterialState.disabled)
+            backgroundColor: WidgetStateProperty.resolveWith((states) {
+              return states.contains(WidgetState.disabled)
                   ? colors.disabled
                   : null; // Defer to the widget's default.
             }),
-            foregroundColor: MaterialStateProperty.resolveWith((states) {
-              return states.contains(MaterialState.disabled)
+            foregroundColor: WidgetStateProperty.resolveWith((states) {
+              return states.contains(WidgetState.disabled)
                   ? colors.disabled
                   : null; // Defer to the widget's default.
             }),
@@ -93,13 +92,13 @@ class AppTheme extends ThemeExtension<AppTheme> {
         ),
         outlinedButtonTheme: OutlinedButtonThemeData(
           style: styles.buttonLarge.copyWith(
-            side: MaterialStateProperty.resolveWith((states) {
-              return states.contains(MaterialState.disabled)
+            side: WidgetStateProperty.resolveWith((states) {
+              return states.contains(WidgetState.disabled)
                   ? BorderSide(color: colors.disabled)
                   : null;
             }),
-            foregroundColor: MaterialStateProperty.resolveWith((states) {
-              return states.contains(MaterialState.disabled)
+            foregroundColor: WidgetStateProperty.resolveWith((states) {
+              return states.contains(WidgetState.disabled)
                   ? colors.disabled
                   : null; // Defer to the widget's default.
             }),
@@ -108,13 +107,13 @@ class AppTheme extends ThemeExtension<AppTheme> {
         textButtonTheme: TextButtonThemeData(
           style: styles.buttonLarge.copyWith(
             backgroundColor:
-                MaterialStateProperty.resolveWith((Set<MaterialState> states) {
-              return states.contains(MaterialState.disabled)
+                WidgetStateProperty.resolveWith((Set<WidgetState> states) {
+              return states.contains(WidgetState.disabled)
                   ? colors.disabled
                   : null; // Defer to the widget's default.
             }),
             foregroundColor:
-                WidgetStateProperty.resolveWith((Set<MaterialState> states) {
+                WidgetStateProperty.resolveWith((Set<WidgetState> states) {
               return states.contains(WidgetState.disabled)
                   ? colors.disabled
                   : null; // Defer to the widget's default.

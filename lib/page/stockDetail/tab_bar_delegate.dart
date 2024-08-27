@@ -4,7 +4,11 @@ class TabBarDelegate extends SliverPersistentHeaderDelegate {
   const TabBarDelegate();
 
   @override
-  Widget build(BuildContext context, double shrinkOffset, bool overlapsContent) {
+  Widget build(
+    BuildContext context,
+    double shrinkOffset,
+    bool overlapsContent,
+  ) {
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 8),
       color: Theme.of(context).scaffoldBackgroundColor,
@@ -18,8 +22,8 @@ class TabBarDelegate extends SliverPersistentHeaderDelegate {
         isScrollable: true,
         tabs: _buildTabs(context),
         indicatorWeight: 0,
-        unselectedLabelColor: Theme.of(context).hintColor, // Adjusted for better visibility
-        labelColor: Theme.of(context).colorScheme.onSurface, // Use onSurface for better theme adaptation
+        unselectedLabelColor: Theme.of(context).hintColor,
+        labelColor: Theme.of(context).colorScheme.onSurface,
         indicatorColor: Theme.of(context).colorScheme.secondary,
         indicatorSize: TabBarIndicatorSize.label,
       ),
@@ -27,7 +31,13 @@ class TabBarDelegate extends SliverPersistentHeaderDelegate {
   }
 
   List<Widget> _buildTabs(BuildContext context) {
-    List<String> tabTitles = ["Overview", "Financials", "News", "Orders", "Trading"];
+    List<String> tabTitles = [
+      'Overview',
+      'Financials',
+      'News',
+      'Orders',
+      'Trading'
+    ];
     return tabTitles.map((title) => _buildTab(context, title)).toList();
   }
 
@@ -47,5 +57,6 @@ class TabBarDelegate extends SliverPersistentHeaderDelegate {
   double get minExtent => 48;
 
   @override
-  bool shouldRebuild(covariant SliverPersistentHeaderDelegate oldDelegate) => false;
+  bool shouldRebuild(covariant SliverPersistentHeaderDelegate oldDelegate) =>
+      false;
 }

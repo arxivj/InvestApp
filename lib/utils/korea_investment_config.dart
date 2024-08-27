@@ -8,7 +8,7 @@ class KoreaInvestmentConfig {
   static late final String appKey;
   static late final String appSecret;
   static late final String grantType;
-  static late final String InquirePresentBalancePath;
+  static late final String inquirePresentBalancePath;
 
   static Future<void> loadConfig() async {
     await dotenv.load();
@@ -18,6 +18,6 @@ class KoreaInvestmentConfig {
     appKey = dotenv.env['APP_KEY']!;
     appSecret = dotenv.env['APP_SECRET']!;
     grantType = dotenv.env['GRANT_TYPE']!;
-    InquirePresentBalancePath = dotenv.env['INQUIRE_PRESENT_BALANCE_PATH']!;
+    inquirePresentBalancePath = dotenv.env['INQUIRE_PRESENT_BALANCE_PATH']!;
   }
 }

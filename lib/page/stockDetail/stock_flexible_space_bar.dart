@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-Widget StockFlexibleSpaceBar(context) {
+Widget stockFlexibleSpaceBar(context) {
   return FlexibleSpaceBar(
     background: Container(
       padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -15,15 +15,13 @@ Widget StockFlexibleSpaceBar(context) {
               const SizedBox(width: 8),
               Expanded(
                 child: Row(
-                  mainAxisAlignment:
-                  MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Column(
-                      crossAxisAlignment:
-                      CrossAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "Apple",
+                          'Apple',
                           style: TextStyle(
                             color: Theme.of(context).colorScheme.primary,
                             fontSize: 24.sp,
@@ -35,21 +33,21 @@ Widget StockFlexibleSpaceBar(context) {
                           text: TextSpan(
                             children: [
                               TextSpan(
-                                text: "AAPL",
+                                text: 'AAPL',
                                 style: TextStyle(
                                   color: Colors.grey,
                                   fontSize: 12.sp,
                                 ),
                               ),
                               TextSpan(
-                                text: "  |  ",
+                                text: '  |  ',
                                 style: TextStyle(
                                   color: Colors.grey,
                                   fontSize: 12.sp,
                                 ),
                               ),
                               TextSpan(
-                                text: "NASDAQ",
+                                text: 'NASDAQ',
                                 style: TextStyle(
                                   color: Colors.grey,
                                   fontSize: 12.sp,
@@ -60,7 +58,7 @@ Widget StockFlexibleSpaceBar(context) {
                         ),
                         SizedBox(height: 4.h),
                         Text(
-                          "capital at risk",
+                          'capital at risk',
                           style: TextStyle(
                             color: Colors.grey,
                             fontSize: 12.sp,
@@ -75,11 +73,10 @@ Widget StockFlexibleSpaceBar(context) {
                       margin: const EdgeInsets.all(8),
                       decoration: BoxDecoration(
                         color: Colors.black,
-                        borderRadius:
-                        BorderRadius.circular(50),
+                        borderRadius: BorderRadius.circular(50),
                       ),
                       child: SvgPicture.asset(
-                        "assets/icons/symbols/aapl.svg",
+                        'assets/icons/symbols/aapl.svg',
                         fit: BoxFit.contain,
                       ),
                     ),
@@ -98,31 +95,29 @@ Widget StockFlexibleSpaceBar(context) {
                 TextButton(
                   onPressed: () {},
                   style: ButtonStyle(
-                    backgroundColor:
-                    MaterialStateProperty.resolveWith(
-                          (states) {
+                    backgroundColor: WidgetStateProperty.resolveWith(
+                      (states) {
                         return Colors.black;
                       },
                     ),
-                    padding: MaterialStateProperty.resolveWith(
-                          (states) {
+                    padding: WidgetStateProperty.resolveWith(
+                      (states) {
                         return const EdgeInsets.symmetric(
                           vertical: 8,
                           horizontal: 16,
                         );
                       },
                     ),
-                    shape: MaterialStateProperty.resolveWith(
-                          (states) {
+                    shape: WidgetStateProperty.resolveWith(
+                      (states) {
                         return RoundedRectangleBorder(
-                          borderRadius:
-                          BorderRadius.circular(100),
+                          borderRadius: BorderRadius.circular(100),
                         );
                       },
                     ),
                   ),
                   child: Text(
-                    "Trade",
+                    'Trade',
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 16.sp,
@@ -133,31 +128,29 @@ Widget StockFlexibleSpaceBar(context) {
                 TextButton(
                   onPressed: () {},
                   style: ButtonStyle(
-                    backgroundColor:
-                    MaterialStateProperty.resolveWith(
-                          (states) {
+                    backgroundColor: WidgetStateProperty.resolveWith(
+                      (states) {
                         return Colors.grey[200];
                       },
                     ),
-                    padding: MaterialStateProperty.resolveWith(
-                          (states) {
+                    padding: WidgetStateProperty.resolveWith(
+                      (states) {
                         return const EdgeInsets.symmetric(
                           vertical: 8,
                           horizontal: 16,
                         );
                       },
                     ),
-                    shape: MaterialStateProperty.resolveWith(
-                          (states) {
+                    shape: WidgetStateProperty.resolveWith(
+                      (states) {
                         return RoundedRectangleBorder(
-                          borderRadius:
-                          BorderRadius.circular(100),
+                          borderRadius: BorderRadius.circular(100),
                         );
                       },
                     ),
                   ),
                   child: Text(
-                    "Watch",
+                    'Watch',
                     style: TextStyle(
                       color: Colors.black,
                       fontSize: 16.sp,

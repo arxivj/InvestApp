@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:untitled/page/chat/chat.dart';
-import 'package:untitled/page/home/home.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:rive/rive.dart';
+import 'package:untitled/page/chat/chat.dart';
+import 'package:untitled/page/home/home.dart';
 import 'package:untitled/page/settings/settings_page.dart';
 import 'package:untitled/utils/rive_utils.dart';
 
@@ -34,8 +34,8 @@ class _NavigationState extends State<Navigation> {
   String getRiveFile(BuildContext context) {
     final themeMode = Theme.of(context).brightness;
     return themeMode == Brightness.dark
-        ? "assets/icons/icons_dark.riv"
-        : "assets/icons/icons_light.riv";
+        ? 'assets/icons/icons_dark.riv'
+        : 'assets/icons/icons_light.riv';
   }
 
   @override
@@ -62,23 +62,23 @@ class _NavigationState extends State<Navigation> {
                     child: RiveAnimation.asset(
                       getRiveFile(context),
                       artboard: [
-                        "HOME",
-                        "LIKE/STAR",
-                        "USER",
-                        "CHAT",
-                        "SETTINGS"
+                        'HOME',
+                        'LIKE/STAR',
+                        'USER',
+                        'CHAT',
+                        'SETTINGS'
                       ][index],
                       onInit: (artboard) {
                         iconControllers[index] = IconController(
                           artboard,
                           [
-                            "HOME_interactivity",
-                            "STAR_Interactivity",
-                            "USER_Interactivity",
-                            "CHAT_Interactivity",
-                            "SETTINGS_Interactivity"
+                            'HOME_interactivity',
+                            'STAR_Interactivity',
+                            'USER_Interactivity',
+                            'CHAT_Interactivity',
+                            'SETTINGS_Interactivity'
                           ][index],
-                          "active",
+                          'active',
                         );
                         iconControllers[index]
                             ?.setActive(index == selectedIndex);
@@ -87,11 +87,11 @@ class _NavigationState extends State<Navigation> {
                     ),
                   ),
                   label: [
-                    "Home",
-                    "LIKE",
-                    "Untitled",
-                    "Chat",
-                    "Settings"
+                    'Home',
+                    'LIKE',
+                    'Untitled',
+                    'Chat',
+                    'Settings'
                   ][index],
                 )),
       ),
@@ -100,8 +100,8 @@ class _NavigationState extends State<Navigation> {
           index: selectedIndex,
           children: const [
             Center(child: Home()),
-            Center(child: Text("Like or Watchlist or Favorite")),
-            Center(child: Text("Untitled")),
+            Center(child: Text('Like or Watchlist or Favorite')),
+            Center(child: Text('Untitled')),
             Center(child: Chat()),
             Center(child: SettingsPage()),
           ],

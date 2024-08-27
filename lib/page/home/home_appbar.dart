@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:untitled/core/constants/app_padding.dart';
 import 'package:untitled/page/stockDetail/stock_detail_page.dart';
 import 'package:untitled/widget/button/theme_button.dart';
 

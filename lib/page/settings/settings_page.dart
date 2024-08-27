@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../utils/korea_investment_service.dart';
+import 'package:untitled/utils/korea_investment_service.dart';
 
 class SettingsPage extends StatelessWidget {
   const SettingsPage({super.key});
@@ -14,10 +14,10 @@ class SettingsPage extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            ProfileHeader(),
-            AccountDetailsSection(),
-            SettingsOptions(),
-            LogoutButton(),
+            const ProfileHeader(),
+            const AccountDetailsSection(),
+            const SettingsOptions(),
+            const LogoutButton(),
             SizedBox(height: 20.h),
             Divider(
               thickness: 5,
@@ -25,9 +25,12 @@ class SettingsPage extends StatelessWidget {
               color: Theme.of(context).colorScheme.onPrimary,
             ),
             SizedBox(height: 20.h),
-            Text('Test Button', style: Theme.of(context).textTheme.headlineMedium),
+            Text(
+              'Test Button',
+              style: Theme.of(context).textTheme.headlineMedium,
+            ),
             SizedBox(height: 20.h),
-            TestButton(),
+            const TestButton(),
             SizedBox(height: 20.h),
           ],
         ),
@@ -37,6 +40,8 @@ class SettingsPage extends StatelessWidget {
 }
 
 class ProfileHeader extends StatelessWidget {
+  const ProfileHeader({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -48,12 +53,15 @@ class ProfileHeader extends StatelessWidget {
       child: Row(
         children: [
           CircleAvatar(
-            radius: 40.sp, // Profile picture size
+            radius: 40.sp,
             backgroundColor: Colors.blue,
-            child: Text('@',
-                style: TextStyle(
-                    fontSize: 24.sp,
-                    color: Colors.white)), // Placeholder for profile picture
+            child: Text(
+              '@',
+              style: TextStyle(
+                fontSize: 24.sp,
+                color: Colors.white,
+              ),
+            ),
           ),
           SizedBox(width: 10.w),
           Column(
@@ -64,7 +72,7 @@ class ProfileHeader extends StatelessWidget {
                 style: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.bold),
               ),
             ],
-          )
+          ),
         ],
       ),
     );
@@ -72,6 +80,8 @@ class ProfileHeader extends StatelessWidget {
 }
 
 class AccountDetailsSection extends StatelessWidget {
+  const AccountDetailsSection({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -79,19 +89,22 @@ class AccountDetailsSection extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text('Account Details', style: Theme.of(context).textTheme.headlineMedium),
-          Divider(),
-          AccountDetailRow(
+          Text(
+            'Account Details',
+            style: Theme.of(context).textTheme.headlineMedium,
+          ),
+          const Divider(),
+          const AccountDetailRow(
             label: 'Name',
             value: 'Dollar',
             icon: Icons.flag,
           ),
-          AccountDetailRow(
+          const AccountDetailRow(
             label: 'Account',
             value: '1234-5678',
             icon: Icons.copy,
           ),
-          AccountDetailRow(
+          const AccountDetailRow(
             label: 'Bank name',
             value: 'KB',
             icon: Icons.copy,
@@ -111,6 +124,7 @@ class AccountDetailRow extends StatelessWidget {
     required this.label,
     required this.value,
     required this.icon,
+    super.key,
   });
 
   @override
@@ -137,11 +151,13 @@ class AccountDetailRow extends StatelessWidget {
 }
 
 class SettingsOptions extends StatelessWidget {
+  const SettingsOptions({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 16.w),
-      child: Column(
+      child: const Column(
         children: [
           SettingsOptionRow(
             icon: Icons.grade,
@@ -165,7 +181,7 @@ class SettingsOptionRow extends StatelessWidget {
   final IconData icon;
   final String text;
 
-  const SettingsOptionRow({super.key, required this.icon, required this.text});
+  const SettingsOptionRow({required this.icon, required this.text, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -178,6 +194,8 @@ class SettingsOptionRow extends StatelessWidget {
 }
 
 class LogoutButton extends StatelessWidget {
+  const LogoutButton({super.key});
+
   @override
   Widget build(BuildContext context) {
     return ListTile(

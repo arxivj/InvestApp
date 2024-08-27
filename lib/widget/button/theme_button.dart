@@ -2,17 +2,17 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:rive/rive.dart';
-import '../../provider/theme_provider.dart';
-import '../../utils/rive_utils.dart';
+import 'package:untitled/provider/theme_provider.dart';
+import 'package:untitled/utils/rive_utils.dart';
 
 class ThemeButton extends StatefulWidget {
   const ThemeButton({super.key});
 
   @override
-  _ThemeButtonState createState() => _ThemeButtonState();
+  ThemeButtonState createState() => ThemeButtonState();
 }
 
-class _ThemeButtonState extends State<ThemeButton> {
+class ThemeButtonState extends State<ThemeButton> {
   bool isClickable = true;
   late StateMachineController _controller;
 
@@ -26,11 +26,18 @@ class _ThemeButtonState extends State<ThemeButton> {
       child: GestureDetector(
         onTap: () {
           if (isClickable) {
-            final newThemeMode = themeProvider.themeMode == ThemeMode.light ? ThemeMode.dark : ThemeMode.light;
+            final newThemeMode = themeProvider.themeMode == ThemeMode.light
+                ? ThemeMode.dark
+                : ThemeMode.light;
             themeProvider.setThemeMode(newThemeMode, isUserInitiated: true);
 
             // Trigger animation input based on the new theme mode
-            RiveUtils.triggerInput(_controller, newThemeMode == ThemeMode.dark ? 'ActivateDarkMode' : 'ActivateLightMode');
+            RiveUtils.triggerInput(
+              _controller,
+              newThemeMode == ThemeMode.dark
+                  ? 'ActivateDarkMode'
+                  : 'ActivateLightMode',
+            );
 
             setState(() {
               isClickable = false;
@@ -47,10 +54,18 @@ class _ThemeButtonState extends State<ThemeButton> {
           'assets/icons/theme_switch.riv',
           fit: BoxFit.cover,
           onInit: (artboard) {
-            _controller = RiveUtils.getRiveController(artboard, stateMachineName: 'Button_Animation');
+            _controller = RiveUtils.getRiveController(
+              artboard,
+              stateMachineName: 'Button_Animation',
+            );
             artboard.addController(_controller);
             // Trigger initial animation based on current theme mode when the artboard is initialized
-            RiveUtils.triggerInput(_controller, themeProvider.themeMode == ThemeMode.dark ? 'ActivateDarkMode' : 'ActivateLightMode');
+            RiveUtils.triggerInput(
+              _controller,
+              themeProvider.themeMode == ThemeMode.dark
+                  ? 'ActivateDarkMode'
+                  : 'ActivateLightMode',
+            );
           },
           // Ensure this matches actual input names in your Rive file
         ),

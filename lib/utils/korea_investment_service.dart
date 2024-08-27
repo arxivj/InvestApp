@@ -1,7 +1,7 @@
 import 'dart:convert';
-import 'package:untitled/utils/korea_investment_config.dart';
-import 'flutter_secure_storage.dart';
 import 'package:http/http.dart' as http;
+import 'package:untitled/utils/flutter_secure_storage.dart';
+import 'package:untitled/utils/korea_investment_config.dart';
 
 class AuthService {
   final SecureStorage _secureStorage = SecureStorage();
@@ -14,19 +14,20 @@ class AuthService {
 
   // 토큰 갱신.. 리프래시 토큰이 없어서 그냥 새로 발급하면 되는걸로 처리..
   Future<void> refreshAccessToken() async {
-    await requestAndStoreToken();  // 새 토큰 요청하고 저장
+    await requestAndStoreToken(); // 새 토큰 요청하고 저장
   }
 
-  String get _tokenUrl => KoreaInvestmentConfig.domain + KoreaInvestmentConfig.tokenPath;
-  String get _revokeUrl => KoreaInvestmentConfig.domain + KoreaInvestmentConfig.revokePath;
-
+  String get _tokenUrl =>
+      KoreaInvestmentConfig.domain + KoreaInvestmentConfig.tokenPath;
+  String get _revokeUrl =>
+      KoreaInvestmentConfig.domain + KoreaInvestmentConfig.revokePath;
 
   /// [requestAndStoreToken] 토큰을 요청하고 저장하는 메서드
   Future<void> requestAndStoreToken() async {
     final body = jsonEncode({
-      "grant_type": KoreaInvestmentConfig.grantType,
-      "appkey": KoreaInvestmentConfig.appKey,
-      "appsecret": KoreaInvestmentConfig.appSecret,
+      'grant_type': KoreaInvestmentConfig.grantType,
+      'appkey': KoreaInvestmentConfig.appKey,
+      'appsecret': KoreaInvestmentConfig.appSecret,
     });
 
     final headers = {'Content-Type': 'application/json; charset=UTF-8'};
@@ -48,7 +49,8 @@ class AuthService {
         await _secureStorage.writeSecureData(
             'token_type', responseJson['token_type']);
 
-        print('>>>>>>>>>>>>>>>>>> Token stored successfully <<<<<<<<<<<<<<<<<<<<');
+        print(
+            '>>>>>>>>>>>>>>>>>> Token stored successfully <<<<<<<<<<<<<<<<<<<<');
       } else {
         print('Failed to retrieve token: ${response.body}');
       }
@@ -59,7 +61,6 @@ class AuthService {
 
   /// [revokeToken] 사용중인 토큰을 폐기하는 메서드
   Future<void> revokeToken() async {
-
     final token = await accessToken; // 캐시된 토큰
 
     if (token == null) {
@@ -70,9 +71,9 @@ class AuthService {
     final headers = {'Content-Type': 'application/json; charset=UTF-8'};
 
     final body = jsonEncode({
-      "appkey": KoreaInvestmentConfig.appKey,
-      "appsecret": KoreaInvestmentConfig.appSecret,
-      "token": token,
+      'appkey': KoreaInvestmentConfig.appKey,
+      'appsecret': KoreaInvestmentConfig.appSecret,
+      'token': token,
     });
 
     try {
@@ -82,9 +83,11 @@ class AuthService {
         body: body,
       );
       if (response.statusCode == 200) {
-        print('>>>>>>>>>>>>>>>>>> Token successfully revoked <<<<<<<<<<<<<<<<<<<<');
-        _cachedAccessToken = null;  // 토큰을 제거 후 캐시된 토큰 초기화
-        await _secureStorage.writeSecureData('access_token', '');  // SecureStorage에 저장된 토큰 제거
+        print(
+            '>>>>>>>>>>>>>>>>>> Token successfully revoked <<<<<<<<<<<<<<<<<<<<');
+        _cachedAccessToken = null; // 토큰을 제거 후 캐시된 토큰 초기화
+        await _secureStorage.writeSecureData(
+            'access_token', ''); // SecureStorage에 저장된 토큰 제거
       } else {
         print('Failed to revoke token: ${response.body}');
       }

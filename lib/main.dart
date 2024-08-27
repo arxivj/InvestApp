@@ -5,13 +5,13 @@ import 'package:provider/provider.dart';
 import 'package:untitled/presenter/themes/mode/dark_theme.dart';
 import 'package:untitled/presenter/themes/mode/light_theme.dart';
 import 'package:untitled/provider/theme_provider.dart';
+import 'package:untitled/root.dart';
 import 'package:untitled/utils/korea_investment_config.dart';
 import 'package:untitled/utils/korea_investment_inquire_service.dart';
-import 'root.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await dotenv.load(fileName: ".env");
+  await dotenv.load(fileName: '.env');
   await KoreaInvestmentConfig.loadConfig();
 
   runApp(

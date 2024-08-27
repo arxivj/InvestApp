@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:untitled/presenter/colors/app_theme_colors.dart';
-import '../app_theme_style.dart';
-import '../app_themes.dart';
+import 'package:untitled/presenter/themes/app_theme_style.dart';
+import 'package:untitled/presenter/themes/app_themes.dart';
 
 class DarkAppTheme extends AppTheme {
-   DarkAppTheme()
+  DarkAppTheme()
       : super(
           name: 'dark',
           brightness: Brightness.dark,
