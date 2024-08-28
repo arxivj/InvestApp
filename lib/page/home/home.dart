@@ -10,8 +10,7 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: homeAppBar(context),
-      // bottomSheet: const StockMarquee(),
+      appBar: const HomeAppBar(),
       body: DefaultTabController(
         length: 5,
         child: NestedScrollView(

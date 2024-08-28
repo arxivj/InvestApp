@@ -88,7 +88,7 @@ class _NavigationState extends State<Navigation> {
                   ),
                   label: [
                     'Home',
-                    'LIKE',
+                    'Like',
                     'Untitled',
                     'Chat',
                     'Settings'
