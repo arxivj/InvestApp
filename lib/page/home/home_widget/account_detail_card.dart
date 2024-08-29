@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:untitled/core/constants/app_padding.dart';
+import 'package:untitled/presenter/themes/app_themes.dart';
 import 'package:untitled/widget/card/card_layout.dart';
 
 class AccountDetailsCard extends StatelessWidget {
@@ -11,9 +12,9 @@ class AccountDetailsCard extends StatelessWidget {
     const String accountNumer = '12345678-01';
     const String accountType = '위탁계좌';
     const String accountBalance = '14,000,000원';
-
+    final appTheme = Theme.of(context).extension<AppTheme>()!;
     return CardLayout(
-      backgroundColor: Theme.of(context).colorScheme.onPrimary,
+      backgroundColor: Theme.of(context).cardColor,
       borderRadius: BorderRadius.circular(14),
       children: [
         Row(
@@ -58,13 +59,13 @@ class AccountDetailsCard extends StatelessWidget {
               onPressed: () {},
               icon: Container(
                 decoration: BoxDecoration(
-                  color: Theme.of(context).colorScheme.secondary,
+                  color: appTheme.colors.buttonColor,
                   shape: BoxShape.circle,
                 ),
                 padding: const EdgeInsets.all(4),
                 child: Icon(
                   Icons.arrow_drop_down,
-                  color: Theme.of(context).highlightColor,
+                  color: appTheme.colors.buttonIconColor,
                   size: 16,
                 ),
               ),
@@ -114,6 +115,8 @@ class ActionButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final appTheme = Theme.of(context).extension<AppTheme>()!;
+
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
@@ -121,13 +124,13 @@ class ActionButton extends StatelessWidget {
           onPressed: () {},
           style: ElevatedButton.styleFrom(
             elevation: 0,
-            backgroundColor: Theme.of(context).colorScheme.secondary,
+            backgroundColor: appTheme.colors.buttonColor,
             padding: const EdgeInsets.all(15),
             shape: const CircleBorder(),
           ),
           child: Icon(
             icon,
-            color: Theme.of(context).highlightColor,
+            color: appTheme.colors.buttonIconColor,
             size: 24,
           ),
         ),
@@ -137,7 +140,7 @@ class ActionButton extends StatelessWidget {
           style: TextStyle(
             fontSize: 10,
             fontWeight: FontWeight.w600,
-            color: Theme.of(context).highlightColor,
+            color: appTheme.colors.buttonIconColor,
           ),
         ),
       ],

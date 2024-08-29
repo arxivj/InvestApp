@@ -14,6 +14,7 @@ class SettingsPage extends StatelessWidget {
           style: TextStyle(color: Colors.black),
         ),
         elevation: 0,
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -21,25 +22,23 @@ class SettingsPage extends StatelessWidget {
           child: Column(
             children: [
               CardLayout(
+                backgroundColor: Theme.of(context).cardColor,
                 children: [
                   SettingsTile(
                     icon: Icons.person,
                     title: 'Profile Settings',
                     subtitle: 'Edit your profile',
-                    onTap: () {
-                    },
+                    onTap: () {},
                   ),
                   SettingsTile(
                     icon: Icons.color_lens,
                     title: 'Theme',
-                    onTap: () {
-                    },
+                    onTap: () {},
                   ),
                   SettingsTile(
                     icon: Icons.language,
                     title: 'Language',
-                    onTap: () {
-                    },
+                    onTap: () {},
                   ),
                 ],
               ),
@@ -47,37 +46,33 @@ class SettingsPage extends StatelessWidget {
                 height: 16.0,
               ),
               CardLayout(
+                backgroundColor: Theme.of(context).cardColor,
                 children: [
                   SettingsTile(
                     icon: Icons.info_outline,
                     title: 'About Us',
-                    onTap: () {
-                    },
+                    onTap: () {},
                   ),
                   SettingsTile(
                     icon: Icons.contact_support,
                     title: 'Contact Support',
-                    onTap: () {
-                    },
+                    onTap: () {},
                   ),
                   SettingsTile(
                     icon: Icons.feedback,
                     title: 'Feedback',
-                    onTap: () {
-                    },
+                    onTap: () {},
                   ),
                   SettingsTile(
                     icon: Icons.security,
                     title: 'Security',
                     subtitle: 'Manage security settings',
-                    onTap: () {
-                    },
+                    onTap: () {},
                   ),
                   SettingsTile(
                     icon: Icons.info,
                     title: 'Version Info',
-                    onTap: () {
-                    },
+                    onTap: () {},
                   ),
                 ],
               ),
@@ -85,12 +80,12 @@ class SettingsPage extends StatelessWidget {
                 height: 16.0,
               ),
               CardLayout(
+                backgroundColor: Theme.of(context).cardColor,
                 children: [
                   SettingsTile(
                     icon: Icons.logout_rounded,
                     title: 'Logout',
-                    onTap: () {
-                    },
+                    onTap: () {},
                   ),
                 ],
               ),

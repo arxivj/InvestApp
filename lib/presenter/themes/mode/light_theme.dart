@@ -6,7 +6,7 @@ import 'package:untitled/presenter/themes/app_themes.dart';
 class LightAppTheme extends AppTheme {
   LightAppTheme()
       : super(
-          name: 'light',
+          name : 'light',
           brightness: Brightness.light,
           colors: AppThemeColors.fromAppColors(isDarkMode: false),
           styles: const AppThemeStyles(

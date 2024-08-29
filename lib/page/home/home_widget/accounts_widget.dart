@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:untitled/core/constants/app_padding.dart';
 import 'package:untitled/page/home/home_widget/account_detail_card.dart';
+import 'package:untitled/presenter/themes/app_themes.dart';
 import 'package:untitled/widget/card/card_layout.dart';
 
 class AccountsWidget extends StatelessWidget {
@@ -10,6 +11,7 @@ class AccountsWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -28,16 +30,16 @@ class AccountsWidget extends StatelessWidget {
   }
 }
 
-
-
 class ActionItemsSection extends StatelessWidget {
   const ActionItemsSection({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final appTheme = Theme.of(context).extension<AppTheme>()!;
     return Padding(
       padding: AppPadding.horizontal16,
       child: CardLayout(
+        backgroundColor: Theme.of(context).cardColor,
         title: Text(
           'Actions',
           style: Theme.of(context).textTheme.headlineMedium,
@@ -47,10 +49,8 @@ class ActionItemsSection extends StatelessWidget {
             padding: EdgeInsets.all(16.sp),
             width: double.infinity,
             decoration: BoxDecoration(
-              color: Theme.of(context).colorScheme.onPrimary,
               borderRadius: BorderRadius.circular(14),
             ),
-            // Add more content or image as needed
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -60,14 +60,14 @@ class ActionItemsSection extends StatelessWidget {
                       width: 40.w,
                       height: 40.h,
                       decoration: BoxDecoration(
-                        color: Theme.of(context).colorScheme.secondary,
+                        color: appTheme.colors.buttonColor,
                         shape: BoxShape.circle,
                       ),
                       child: Container(
                         padding: EdgeInsets.all(8.sp),
                         child: Icon(
                           Icons.sell_outlined,
-                          color: Theme.of(context).colorScheme.onPrimary,
+                          color: appTheme.colors.buttonIconColor,
                           size: 24.sp,
                         ),
                       ),

@@ -8,7 +8,7 @@ class AppThemeColors {
   final Color secondary;
   final Color accent;
   final Color background;
-  final Color backgroundDark;
+  final Color cardColor;
   final Color disabled;
   final Color information;
   final Color success;
@@ -19,6 +19,8 @@ class AppThemeColors {
   final Color textOnPrimary;
   final Color border;
   final Color hint;
+  final Color buttonColor;
+  final Color buttonIconColor;
 
   const AppThemeColors({
     required this.primarySwatch,
@@ -26,7 +28,7 @@ class AppThemeColors {
     required this.secondary,
     required this.accent,
     required this.background,
-    required this.backgroundDark,
+    required this.cardColor,
     required this.disabled,
     required this.information,
     required this.success,
@@ -37,6 +39,8 @@ class AppThemeColors {
     required this.textOnPrimary,
     required this.border,
     required this.hint,
+    required this.buttonColor, 
+    required this.buttonIconColor,
   });
 
   static AppThemeColors fromAppColors({
@@ -61,8 +65,8 @@ class AppThemeColors {
       primary: isDarkMode ? AppColors.onPrimary : AppColors.primarySeed,
       secondary: isDarkMode ? AppColors.onSurface : AppColors.secondary,
       accent: isDarkMode ? AppColors.primarySeed : AppColors.secondaryVariant,
-      background: isDarkMode ? AppColors.background : AppColors.background,
-      backgroundDark: isDarkMode ? AppColors.backgroundDark : AppColors.background,
+      cardColor: isDarkMode ? AppColors.cardColorDark : AppColors.cardColor,
+      background: isDarkMode ? AppColors.backgroundDark : AppColors.background,
       disabled: isDarkMode ? AppColors.surface : AppColors.surface,
       information: isDarkMode ? AppColors.onBackground : AppColors.secondary,
       success: isDarkMode ? AppColors.primaryVariant : AppColors.primaryVariant,
@@ -73,11 +77,13 @@ class AppThemeColors {
       textOnPrimary: isDarkMode ? AppColors.onSurface : AppColors.onPrimary,
       border: isDarkMode ? AppColors.primarySeed : AppColors.surface,
       hint: isDarkMode ? AppColors.onSurface : AppColors.onSurface,
+      buttonColor: isDarkMode ? AppColors.buttonColorDark : AppColors.buttonColor,
+      buttonIconColor: isDarkMode ? AppColors.buttonIconColorDark : AppColors.buttonIconColor,
     );
   }
 
+  // lerp 메서드도 업데이트
   AppThemeColors lerp(covariant dynamic other, double t) {
-    // 여기서 covariant 키워드는 실질적으로 별 의미가 없지만, 해당 메서드를 override 하는 쪽에서 covariant 키워드를 사용한다는걸 명시하기 위해 작성
     if (other is! AppThemeColors) {
       return this;
     }
@@ -86,8 +92,8 @@ class AppThemeColors {
       primary: Color.lerp(primary, other.primary, t)!,
       secondary: Color.lerp(secondary, other.secondary, t)!,
       accent: Color.lerp(accent, other.accent, t)!,
+      cardColor: Color.lerp(cardColor, other.cardColor, t)!,
       background: Color.lerp(background, other.background, t)!,
-      backgroundDark: Color.lerp(backgroundDark, other.backgroundDark, t)!,
       disabled: Color.lerp(disabled, other.disabled, t)!,
       information: Color.lerp(information, other.information, t)!,
       success: Color.lerp(success, other.success, t)!,
@@ -98,6 +104,8 @@ class AppThemeColors {
       textOnPrimary: Color.lerp(textOnPrimary, other.textOnPrimary, t)!,
       border: Color.lerp(border, other.border, t)!,
       hint: Color.lerp(hint, other.hint, t)!,
+      buttonColor: Color.lerp(buttonColor, other.buttonColor, t)!,
+      buttonIconColor: Color.lerp(buttonIconColor, other.buttonIconColor, t)!,
     );
   }
 }
